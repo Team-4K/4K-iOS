@@ -36,8 +36,6 @@ extension UITextView {
             paragraphStyle.maximumLineHeight = style.pointSize * 1.48
         }
         
-        paragraphStyle.lineBreakMode = .byTruncatingTail
-        
         attributedString.addAttribute(
             .paragraphStyle,
             value: paragraphStyle,
