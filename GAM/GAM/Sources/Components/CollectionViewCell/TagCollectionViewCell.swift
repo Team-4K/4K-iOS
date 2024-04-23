@@ -79,7 +79,15 @@ final class TagCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func setData(data: String) {
+    func setData(type: TagViewType, data: String) {
+        switch type {
+        case .filter:
+            self.isEnable = true
+        case .editProfile:
+            self.isEnable = false
+        }
+        
         self.contentLabel.text = data
     }
+    
 }

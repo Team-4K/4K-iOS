@@ -104,7 +104,7 @@ extension SignUpTagViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.className, for: indexPath) as? TagCollectionViewCell
         else { return UICollectionViewCell() }
         
-        cell.setData(data: Tag.shared.tags[indexPath.row].name)
+        cell.setData(type: .editProfile, data: Tag.shared.tags[indexPath.row].name)
         return cell
     }
 }
@@ -114,7 +114,7 @@ extension SignUpTagViewController: UICollectionViewDataSource {
 extension SignUpTagViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizingCell: TagCollectionViewCell = TagCollectionViewCell()
-        sizingCell.setData(data: Tag.shared.tags[indexPath.row].name)
+        sizingCell.setData(type: .editProfile, data: Tag.shared.tags[indexPath.row].name)
         sizingCell.contentLabel.sizeToFit()
         
         let cellWidth = sizingCell.contentLabel.frame.width + Number.cellHorizontalSpacing
