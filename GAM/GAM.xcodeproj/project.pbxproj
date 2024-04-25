@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2233EAA92BD79F0E00A315BF /* TagViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233EAA82BD79F0E00A315BF /* TagViewType.swift */; };
 		22E6704E2BAAF628005028BC /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704D2BAAF628005028BC /* Int+.swift */; };
 		22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704F2BAB0AA7005028BC /* UITextView+.swift */; };
 		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
@@ -233,7 +232,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2233EAA82BD79F0E00A315BF /* TagViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewType.swift; sourceTree = "<group>"; };
 		22E6704D2BAAF628005028BC /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		22E6704F2BAB0AA7005028BC /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
@@ -1096,7 +1094,6 @@
 				FFD9DAF62A79668E0085B965 /* ToastMessageType.swift */,
 				FFD9DB0A2A7A9D550085B965 /* ContactURLType.swift */,
 				845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */,
-				2233EAA82BD79F0E00A315BF /* TagViewType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1391,7 +1388,6 @@
 				FFEB5CB32B562F8300953362 /* GetBrowseDesignerResponseDTO.swift in Sources */,
 				FFF605C82A65809B00A1EEC6 /* BrowseScrapCollectionHeaderView.swift in Sources */,
 				FFCDF8592A5A817700C731A3 /* ScrapButton.swift in Sources */,
-				2233EAA92BD79F0E00A315BF /* TagViewType.swift in Sources */,
 				FFA94D212A4F1D70009B034F /* BaseResponseType.swift in Sources */,
 				FFD9DB032A7A6A600085B965 /* GamEmptyView.swift in Sources */,
 				84E79E212B5663A000C80DB7 /* SettingTableHeaderView.swift in Sources */,

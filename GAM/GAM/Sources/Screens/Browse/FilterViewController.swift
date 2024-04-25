@@ -107,7 +107,7 @@ extension FilterViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.className, for: indexPath) as? TagCollectionViewCell
         else { return UICollectionViewCell() }
         
-        cell.setData(type: .filter, data: Tag.shared.tags[indexPath.row].name)
+        cell.setData(data: Tag.shared.tags[indexPath.row].name)
         return cell
     }
 }
@@ -117,7 +117,7 @@ extension FilterViewController: UICollectionViewDataSource {
 extension FilterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizingCell: TagCollectionViewCell = TagCollectionViewCell()
-        sizingCell.setData(type: .filter, data: Tag.shared.tags[indexPath.row].name)
+        sizingCell.setData(data: Tag.shared.tags[indexPath.row].name)
         sizingCell.contentLabel.sizeToFit()
         
         let cellWidth = sizingCell.contentLabel.frame.width + Number.cellHorizontalSpacing
@@ -139,9 +139,7 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
                 let indexPath = IndexPath(item: item, section: 0)
                 guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
                 
-                if !cell.isSelected {
-                    cell.isEnable = false
-                }
+                cell.isEnable = cell.isSelected
             }
         }
 
