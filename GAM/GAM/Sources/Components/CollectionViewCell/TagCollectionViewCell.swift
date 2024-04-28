@@ -82,4 +82,5 @@ final class TagCollectionViewCell: UICollectionViewCell {
     func setData(data: String) {
         self.contentLabel.text = data
     }
+    
 }

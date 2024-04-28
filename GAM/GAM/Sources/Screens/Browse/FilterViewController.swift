@@ -139,9 +139,7 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
                 let indexPath = IndexPath(item: item, section: 0)
                 guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
                 
-                if !cell.isSelected {
-                    cell.isEnable = false
-                }
+                cell.isEnable = cell.isSelected
             }
         }
 

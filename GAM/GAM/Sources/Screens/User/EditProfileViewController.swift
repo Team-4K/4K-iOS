@@ -76,7 +76,7 @@ final class EditProfileViewController: BaseViewController {
     
     var sendUpdateDelegate: SendUpdateDelegate?
     private var keyboardHeight: CGFloat = 0
-    private var profile: UserProfileEntity = .init(userID: 0, name: "", isScrap: false, info: "", infoDetail: "", tags: [], email: "")
+    private var profile: UserProfileEntity
     private let disposeBag: DisposeBag = DisposeBag()
     private var profileInfoObservation: NSKeyValueObservation?
     private var tagObservation: NSKeyValueObservation?
@@ -92,9 +92,8 @@ final class EditProfileViewController: BaseViewController {
     // MARK: Initializer
     
     init(profile: UserProfileEntity) {
-        super.init(nibName: nil, bundle: nil)
-        
         self.profile = profile
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -327,13 +326,34 @@ extension EditProfileViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.className, for: indexPath) as? TagCollectionViewCell
         else { return UICollectionViewCell() }
         cell.setData(data: Tag.shared.tags[indexPath.row].name)
+        if profile.tags.count == 3 {
+            cell.isEnable = cell.isSelected
+        }
         return cell
     }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        if self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 == 3 {
+//            for item in 0..<self.tagCollectionView.numberOfItems(inSection: 0) {
+//                print(item)
+//                let indexPath = IndexPath(item: item, section: 0)
+//                guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+//                
+//                print(item, cell.isSelected)
+//                if !cell.isSelected {
+//                    print("\(item)선택안됨")
+//                    cell.isEnable = false
+//                }
+//            }
+//        }
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizingCell: TagCollectionViewCell = TagCollectionViewCell()
         sizingCell.setData(data: Tag.shared.tags[indexPath.row].name)
@@ -352,14 +372,32 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
                 cell.isSelected = true
             }
         }
-        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
+        
+        if self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 == 3 {
+            for item in 0..<self.tagCollectionView.numberOfItems(inSection: 0) {
+                let indexPath = IndexPath(item: item, section: 0)
+                guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+                
+                cell.isEnable = cell.isSelected
+            }
+        }
+
+        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell {
             cell.isSelected = false
         }
-        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count != 0
+        
+        for item in 0..<self.tagCollectionView.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+            guard let cell = self.tagCollectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else { return }
+            
+            cell.isEnable = true
+        }
+        
+        self.tagInfoLabel.isHidden = self.tagCollectionView.indexPathsForSelectedItems?.count ?? 0 > 0
     }
 }
 
