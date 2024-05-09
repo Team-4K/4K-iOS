@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22E6704E2BAAF628005028BC /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704D2BAAF628005028BC /* Int+.swift */; };
 		22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704F2BAB0AA7005028BC /* UITextView+.swift */; };
+		22F88A532BEC8E790085E093 /* BlockUserRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */; };
 		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
@@ -234,6 +235,7 @@
 /* Begin PBXFileReference section */
 		22E6704D2BAAF628005028BC /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		22E6704F2BAB0AA7005028BC /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserRequestDTO.swift; sourceTree = "<group>"; };
 		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
@@ -1111,6 +1113,7 @@
 				84A7297E2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift */,
 				845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */,
 				84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */,
+				22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1422,6 +1425,7 @@
 				84E311AE2B56D92D00C981B7 /* LogoutRequestDTO.swift in Sources */,
 				FF6CC0352A951E9900B24C94 /* AuthRouter.swift in Sources */,
 				84A7297F2B4EB5400060AF91 /* UpdateLinkRequestDTO.swift in Sources */,
+				22F88A532BEC8E790085E093 /* BlockUserRequestDTO.swift in Sources */,
 				FFC7337C2A6FA8E5008B5054 /* GamSingleLineLabel.swift in Sources */,
 				FFA94D1E2A4F1D4C009B034F /* BaseService.swift in Sources */,
 			);

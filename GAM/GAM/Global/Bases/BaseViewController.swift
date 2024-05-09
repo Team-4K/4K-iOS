@@ -100,7 +100,17 @@ extension BaseViewController {
 프로필을 더이상 볼 수 없습니다.
 """,
                         okTitle: "차단") { _ in
-                            // TODO: block user
+                            let dto = BlockUserRequestDTO(targetUserId: userID, currentBlockStatus: false)
+                            UserService.shared.blockUser(data: dto) { networkResult in
+                                switch networkResult {
+                                case .success:
+                                    debugPrint("유저 차단 성공")
+                                default:
+                                    self.showNetworkErrorAlert()
+                                }
+                                self.stopActivityIndicator()
+                            }
+                            
                             self.navigationController?.popViewController(animated: true)
                             self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
                         }

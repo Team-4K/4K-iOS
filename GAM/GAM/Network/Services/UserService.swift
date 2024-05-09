@@ -27,6 +27,7 @@ internal protocol UserServiceProtocol {
     func updateLink(contactUrlType: ContactURLType, data: UpdateLinkRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func updatePortfolio(data: UpdateMyPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func getProfile(completion: @escaping (NetworkResult<Any>) -> (Void))
+    func blockUser(data: BlockUserRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class UserService: BaseService {
@@ -324,6 +325,23 @@ extension UserService: UserServiceProtocol {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = self.judgeStatus(by: statusCode, data, UpdateProfileResponseDTO.self)
+                completion(networkResult)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+    
+    // [POST] 유저 차단
+    func blockUser(data: BlockUserRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.blockUser(data: data)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                // TODO: - 제네릭 타입 변경해야됨
+                let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
                 debugPrint(error)
