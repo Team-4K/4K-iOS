@@ -124,8 +124,17 @@ extension BaseViewController {
                     self.makeAlertWithCancel(
                         title: "\(username) 님을 신고합니다.",
                         okTitle: "신고") { _ in
-                            // TODO: report user
-                            self.showToastMessage(type: .completedUserReport)
+                            let dto = ReportUserRequestDTO(targetUserId: userID, content: "신고", workId: -1)
+                            UserService.shared.reportUser(data: dto) { networkResult in
+                                switch networkResult {
+                                case .success:
+                                    self.navigationController?.popViewController(animated: true)
+                                    self.navigationController?.topViewController?.showToastMessage(type: .completedUserReport)
+                                default:
+                                    self.showNetworkErrorAlert()
+                                }
+                                self.stopActivityIndicator()
+                            }
                         }
                 }
             )
