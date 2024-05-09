@@ -28,6 +28,7 @@ enum UserRouter {
     case updatePortfolio(data: UpdateMyPortfolioRequestDTO)
     case getProfile
     case updateProfile(data: UpdateMyProfileRequestDTO)
+    case blockUser(data: BlockUserRequestDTO)
 }
 
 extension UserRouter: TargetType {
@@ -87,12 +88,14 @@ extension UserRouter: TargetType {
             return "/user/my/profile"
         case .updateProfile:
             return "/user/introduce"
+        case .blockUser:
+            return "/block"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .requestSignUp, .requestScrapDesigner, .createPortfolio:
+        case .requestSignUp, .requestScrapDesigner, .createPortfolio, .blockUser:
             return .post
         case .checkUsernameDuplicated, .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner, .getUserProfile, .getUserPortfolio, .getPortfolio, .getImageUrl, .getProfile:
             return .get
@@ -144,6 +147,8 @@ extension UserRouter: TargetType {
         case .updatePortfolio(let data):
             return .requestJSONEncodable(data)
         case .updateProfile(let data):
+            return .requestJSONEncodable(data)
+        case .blockUser(let data):
             return .requestJSONEncodable(data)
         }
     }

@@ -100,9 +100,17 @@ extension BaseViewController {
 프로필을 더이상 볼 수 없습니다.
 """,
                         okTitle: "차단") { _ in
-                            // TODO: block user
-                            self.navigationController?.popViewController(animated: true)
-                            self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
+                            let dto = BlockUserRequestDTO(targetUserId: userID, currentBlockStatus: false)
+                            UserService.shared.blockUser(data: dto) { networkResult in
+                                switch networkResult {
+                                case .success:
+                                    self.navigationController?.popViewController(animated: true)
+                                    self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
+                                default:
+                                    self.showNetworkErrorAlert()
+                                }
+                                self.stopActivityIndicator()
+                            }
                         }
                 }
             )

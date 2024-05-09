@@ -15,6 +15,7 @@ final class GamNavigationView: UIView {
         case backTitleShare
         case search
         case searchFilter
+        case backUsername
         case backUsernameScrapMore
         case usernameSetting
         case backTitleSave
@@ -72,6 +73,7 @@ final class GamNavigationView: UIView {
         case .backTitleShare: self.setBackTitleShareLayout()
         case .search: self.setSearchLayout()
         case .searchFilter: self.setSearchFilterLayout()
+        case .backUsername: self.setBackUsernameLayout()
         case .backUsernameScrapMore: self.setBackUsernameScrapMoreLayout()
         case .usernameSetting: self.setUsernameSettingLayout()
         case .backTitleSave: self.setBackTitleSaveLayout()
@@ -137,6 +139,21 @@ extension GamNavigationView {
             make.centerY.equalTo(self.searchButton)
             make.width.height.equalTo(44)
             make.trailing.equalTo(self.searchButton.snp.leading)
+        }
+    }
+    
+    private func setBackUsernameLayout() {
+        self.addSubviews([backButton, headline2Label, underlineView])
+        
+        self.setLeftButtonLayout(button: self.backButton)
+        self.headline2Label.snp.makeConstraints { make in
+            make.centerY.equalTo(self.backButton)
+            make.left.equalTo(self.backButton.snp.right).offset(4)
+        }
+        self.underlineView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(1)
         }
     }
     

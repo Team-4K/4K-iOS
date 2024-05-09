@@ -76,6 +76,11 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.resetData()
+    }
+    
     // MARK: Methods
     
     private func setUI() {
@@ -91,7 +96,23 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
         self.authorLabel.text = data.name
         self.authorInfoLabel.text = data.info
         self.visibilityCountLabel.text = "\(data.visibilityCount)"
-        self.scrapButton.isSelected = data.isScrap
+        
+        if data.userId == UserInfo.shared.userID {
+            self.scrapButton.isHidden = true
+        } else {
+            self.scrapButton.isSelected = data.isScrap
+        }
+    }
+    
+    func resetData() {
+        self.thumbnailImageView.image = nil
+        self.titleLabel.text = nil
+        self.tagsLabel.text = nil
+        self.authorLabel.text = nil
+        self.authorInfoLabel.text = nil
+        self.visibilityCountLabel.text = nil
+        self.scrapButton.isHidden = false
+        self.scrapButton.isSelected = false
     }
 }
 
