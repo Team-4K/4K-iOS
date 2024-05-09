@@ -104,15 +104,13 @@ extension BaseViewController {
                             UserService.shared.blockUser(data: dto) { networkResult in
                                 switch networkResult {
                                 case .success:
-                                    debugPrint("유저 차단 성공")
+                                    self.navigationController?.popViewController(animated: true)
+                                    self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
                                 default:
                                     self.showNetworkErrorAlert()
                                 }
                                 self.stopActivityIndicator()
                             }
-                            
-                            self.navigationController?.popViewController(animated: true)
-                            self.navigationController?.topViewController?.showToastMessage(type: .completedUserBlock)
                         }
                 }
             )
