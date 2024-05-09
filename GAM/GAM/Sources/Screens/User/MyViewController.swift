@@ -138,7 +138,7 @@ extension MyViewController {
         }
         
         self.scrollView.snp.makeConstraints { make in
-            make.top.equalTo(self.tabHeaderView.snp.bottom).offset(-7)
+            make.top.equalTo(self.tabHeaderView.snp.bottom)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
