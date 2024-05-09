@@ -91,7 +91,12 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
         self.authorLabel.text = data.name
         self.authorInfoLabel.text = data.info
         self.visibilityCountLabel.text = "\(data.visibilityCount)"
-        self.scrapButton.isSelected = data.isScrap
+        
+        if data.userId == UserInfo.shared.userID {
+            self.scrapButton.isHidden = true
+        } else {
+            self.scrapButton.isSelected = data.isScrap
+        }
     }
 }
 

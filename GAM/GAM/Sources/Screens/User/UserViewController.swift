@@ -18,7 +18,7 @@ final class UserViewController: BaseViewController {
     
     // MARK: UIComponents
     
-    private let navigationView: GamNavigationView = GamNavigationView(type: .backUsernameScrapMore)
+    private var navigationView: GamNavigationView
     private let tabHeaderView: PagingTabHeaderView = PagingTabHeaderView()
     private let scrollView: UIScrollView = UIScrollView()
     
@@ -48,9 +48,10 @@ final class UserViewController: BaseViewController {
     // MARK: Initializer
     
     init(userID: Int) {
-        super.init(nibName: nil, bundle: nil)
-        
+        self.navigationView = GamNavigationView(type: userID == UserInfo.shared.userID ? .backUsername : .backUsernameScrapMore)
         self.profile.userID = userID
+        
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
