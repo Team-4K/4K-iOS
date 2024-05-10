@@ -95,7 +95,7 @@ final class ProfileInfoView: UIView {
         
         self.detailTextView.snp.makeConstraints { make in
             make.top.equalTo(self.underlineView.snp.bottom).offset(12)
-            make.horizontalEdges.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(11)
             make.bottom.equalToSuperview().inset(24)
         }
     }
