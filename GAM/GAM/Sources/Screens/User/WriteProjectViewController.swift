@@ -46,7 +46,6 @@ final class WriteProjectViewController: BaseViewController, UINavigationControll
         let imageView: UIImageView = UIImageView()
         imageView.backgroundColor = .gamWhite
         imageView.makeRounded(cornerRadius: 10)
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private let projectImageUploadButton: UIButton = {

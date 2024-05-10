@@ -78,7 +78,6 @@ class PortfolioTableViewCell: UITableViewCell {
         self.detailLabel.numberOfLines = 0
         self.detailLabel.lineBreakMode = .byCharWrapping
         self.thumbnailImageView.backgroundColor = .gamWhite
-        self.thumbnailImageView.contentMode = .scaleAspectFit
     }
     
     private func setLayout() {
