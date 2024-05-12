@@ -92,6 +92,7 @@
 		FF6E2D572A965F7800EA313A /* MagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */; };
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
 		FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */; };
+		FF92584D2BEF519F00837C91 /* AuthIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92584C2BEF519F00837C91 /* AuthIntercepter.swift */; };
 		FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
@@ -293,6 +294,7 @@
 		FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineResponseDTO.swift; sourceTree = "<group>"; };
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamPopupViewController.swift; sourceTree = "<group>"; };
+		FF92584C2BEF519F00837C91 /* AuthIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthIntercepter.swift; sourceTree = "<group>"; };
 		FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameDuplicatedResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
@@ -874,6 +876,7 @@
 				FFA94D182A4F1D19009B034F /* APIEssentials */,
 				FFA94D1F2A4F1D59009B034F /* DTO */,
 				FFA94D222A4F1D84009B034F /* NetworkLoggerPlugin.swift */,
+				FF92584C2BEF519F00837C91 /* AuthIntercepter.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1355,6 +1358,7 @@
 				FFCDF87E2A5C117900C731A3 /* NoScrapMagazineTableViewCell.swift in Sources */,
 				FFA94CF12A4F1ACA009B034F /* UIView+.swift in Sources */,
 				FF6CC02F2A9511ED00B24C94 /* GamMoyaProvider.swift in Sources */,
+				FF92584D2BEF519F00837C91 /* AuthIntercepter.swift in Sources */,
 				FFCDF85C2A5A89D000C731A3 /* MagazineEntity.swift in Sources */,
 				FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */,
 				FF6CC02C2A95072200B24C94 /* PublicRouter.swift in Sources */,

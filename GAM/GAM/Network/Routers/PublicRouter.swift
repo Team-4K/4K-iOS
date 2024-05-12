@@ -45,4 +45,8 @@ extension PublicRouter: TargetType {
             return ["Content-Type": "application/json"]
         }
     }
+    
+    var validationType: ValidationType {
+        return .successCodes
+    }
 }
