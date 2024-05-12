@@ -51,7 +51,8 @@ final class AuthInterceptor: RequestInterceptor {
                     
                     UserDefaultsManager.accessToken = result.accessToken
                     UserDefaultsManager.refreshToken = result.refreshToken
-                    completion(.retry)
+                    // TODO: 이자식 왜이럴까? 여기서 무한호출되는듯 
+//                    completion(.retry)
                 }
             case .requestErr:
                 UserDefaultsManager.userID = nil
