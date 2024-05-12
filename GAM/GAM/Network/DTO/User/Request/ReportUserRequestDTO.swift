@@ -8,5 +8,4 @@
 struct ReportUserRequestDTO: Encodable {
     let targetUserId: Int
     let content: String
-    let workId: Int
 }

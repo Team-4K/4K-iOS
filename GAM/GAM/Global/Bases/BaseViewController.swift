@@ -121,15 +121,22 @@ extension BaseViewController {
                 title: "신고하기",
                 style: .destructive,
                 handler: { _ in
-                    self.makeAlertWithCancel(
+                    self.makeAlertWithTextField(
                         title: "\(username) 님을 신고합니다.",
-                        okTitle: "신고") { _ in
-                            let dto = ReportUserRequestDTO(targetUserId: userID, content: "신고", workId: -1)
+                        placeHolder: "신고 내용을 입력해주세요.",
+                        okTitle: "신고") { content in
+                            let dto = ReportUserRequestDTO(targetUserId: userID, content: content)
                             UserService.shared.reportUser(data: dto) { networkResult in
                                 switch networkResult {
                                 case .success:
                                     self.navigationController?.popViewController(animated: true)
                                     self.navigationController?.topViewController?.showToastMessage(type: .completedUserReport)
+                                case .requestErr(let error):
+                                    if error as! String == "이미 신고 한 유저입니다. 신고 처리 진행중" {
+                                        self.showToastMessage(type: .completedUserReport)
+                                    } else {
+                                        self.showNetworkErrorAlert()
+                                    }
                                 default:
                                     self.showNetworkErrorAlert()
                                 }
