@@ -17,15 +17,8 @@ final class AuthInterceptor: RequestInterceptor {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         let accessToken = UserInfo.shared.accessToken
         let refreshToken = UserInfo.shared.refreshToken
-        guard urlRequest.url?.absoluteString.hasPrefix(APIConstants.baseURL) == true
-        else {
-            completion(.success(urlRequest))
-            return
-        }
         
         var urlRequest = urlRequest
-        urlRequest.setValue(refreshToken, forHTTPHeaderField: "refreshToken")
-        print("adaptor 적용 \(urlRequest.headers)")
         urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
         completion(.success(urlRequest))
     }
@@ -41,7 +34,6 @@ final class AuthInterceptor: RequestInterceptor {
         let accessToken = UserInfo.shared.accessToken
         let refreshToken = UserInfo.shared.refreshToken
         
-        // 토큰 갱신 API 호출
         AuthService.shared.requestRefreshToken(data: RefreshTokenRequestDTO(accessToken: accessToken, refreshToken: refreshToken)) { networkResult in
             switch networkResult {
             case .success(let responseData):
@@ -51,26 +43,18 @@ final class AuthInterceptor: RequestInterceptor {
                     
                     UserDefaultsManager.accessToken = result.accessToken
                     UserDefaultsManager.refreshToken = result.refreshToken
-                    // TODO: 이자식 왜이럴까? 여기서 무한호출되는듯 
-//                    completion(.retry)
+                    
+                    completion(.retry)
                 }
             case .requestErr:
                 UserDefaultsManager.userID = nil
                 UserDefaultsManager.accessToken = nil
                 UserDefaultsManager.refreshToken = nil
+                completion(.doNotRetry)
             default:
                 debugPrint("Refresh Token error")
+                completion(.doNotRetry)
             }
         }
-//        AuthService.shared.getNewToken { result in
-//            switch result {
-//            case .success:
-//                print("Retry-토큰 재발급 성공")
-//                completion(.retry)
-//            case .failure(let error):
-//                // 갱신 실패 -> 로그인 화면으로 전환
-//                completion(.doNotRetryWithError(error))
-//            }
-//        }
     }
 }
