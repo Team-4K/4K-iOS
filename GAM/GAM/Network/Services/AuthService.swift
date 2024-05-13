@@ -35,7 +35,7 @@ extension AuthService: AuthServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SocialLoginResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -51,7 +51,7 @@ extension AuthService: AuthServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, RefreshTokenResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -67,7 +67,7 @@ extension AuthService: AuthServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -82,7 +82,7 @@ extension AuthService: AuthServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
