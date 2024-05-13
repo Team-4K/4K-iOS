@@ -102,11 +102,10 @@ private extension NetworkLoggerPlugin {
         }
         
         var output = [String]()
-//        output += [format(loggerId, date: date, identifier: "Response", message: response.description)]
         
         output += [format(loggerId, date: date, identifier: "Status Code", message: "\(response.statusCode)")]
         
-        if let data = data, let stringData = String(data: responseDataFormatter?(data) ?? data, encoding: String.Encoding.utf8), isVerbose {
+        if let data = data, let stringData = data.prettyJson, isVerbose {
             output += [stringData]
         }
         
