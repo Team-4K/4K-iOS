@@ -10,6 +10,7 @@
 		22E6704E2BAAF628005028BC /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704D2BAAF628005028BC /* Int+.swift */; };
 		22E670502BAB0AA7005028BC /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6704F2BAB0AA7005028BC /* UITextView+.swift */; };
 		22F88A532BEC8E790085E093 /* BlockUserRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */; };
+		22F88A742BECF7CC0085E093 /* ReportUserRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F88A732BECF7CC0085E093 /* ReportUserRequestDTO.swift */; };
 		840BFFAC2B7B23CF00DF31C3 /* SecessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */; };
 		845DB2AC2B5034DD007E7ED9 /* WriteProjectViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */; };
 		845DB2AE2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */; };
@@ -236,6 +237,7 @@
 		22E6704D2BAAF628005028BC /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		22E6704F2BAB0AA7005028BC /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserRequestDTO.swift; sourceTree = "<group>"; };
+		22F88A732BECF7CC0085E093 /* ReportUserRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportUserRequestDTO.swift; sourceTree = "<group>"; };
 		840BFFAB2B7B23CF00DF31C3 /* SecessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecessionRequestDTO.swift; sourceTree = "<group>"; };
 		845DB2AB2B5034DD007E7ED9 /* WriteProjectViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteProjectViewType.swift; sourceTree = "<group>"; };
 		845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyPortfolioRequestDTO.swift; sourceTree = "<group>"; };
@@ -1114,6 +1116,7 @@
 				845DB2AD2B504914007E7ED9 /* UpdateMyPortfolioRequestDTO.swift */,
 				84BBCBF52B52CB2C0010F2AE /* UpdateMyProfileRequestDTO.swift */,
 				22F88A522BEC8E790085E093 /* BlockUserRequestDTO.swift */,
+				22F88A732BECF7CC0085E093 /* ReportUserRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				FFA94CF92A4F1B26009B034F /* UIStackView+.swift in Sources */,
 				FFC7338F2A717A64008B5054 /* PortfolioTableViewCell.swift in Sources */,
 				FF6CC0432A963E5F00B24C94 /* SignUpRequestDTO.swift in Sources */,
+				22F88A742BECF7CC0085E093 /* ReportUserRequestDTO.swift in Sources */,
 				FF6CC0292A9506E500B24C94 /* PublicService.swift in Sources */,
 				84C03A092B4D0D7A0058EC79 /* GetImageUrlRequestDTO.swift in Sources */,
 				84C03A0D2B4E40500058EC79 /* UploadImageRequestDTO.swift in Sources */,
