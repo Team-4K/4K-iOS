@@ -24,9 +24,9 @@ final class AuthInterceptor: RequestInterceptor {
         }
         
         var urlRequest = urlRequest
-        urlRequest.setValue(accessToken, forHTTPHeaderField: "accessToken")
         urlRequest.setValue(refreshToken, forHTTPHeaderField: "refreshToken")
         print("adaptor 적용 \(urlRequest.headers)")
+        urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
         completion(.success(urlRequest))
     }
 
