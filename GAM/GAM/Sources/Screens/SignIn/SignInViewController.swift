@@ -71,10 +71,10 @@ final class SignInViewController: BaseViewController {
             if UserApi.isKakaoTalkLoginAvailable() {
                 UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                     if let error = error {
-                        debugPrint(error)
+                        gamPrint(error)
                     }
                     else {
-                        debugPrint("loginWithKakaoTalk() success.")
+                        gamPrint("loginWithKakaoTalk() success.")
                         self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao, deviceToken: UserInfo.shared.deviceToken), isProfileCompleted: { bool in
                             self?.presentNextViewController(isProfileCompleted: bool)
                         })
@@ -83,10 +83,10 @@ final class SignInViewController: BaseViewController {
             } else {
                 UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                     if let error = error {
-                        debugPrint(error)
+                        gamPrint(error)
                     }
                     else {
-                        debugPrint("loginWithKakaoAccount() success.")
+                        gamPrint("loginWithKakaoAccount() success.")
                         self?.requestSocialLogin(data: .init(token: oauthToken?.accessToken ?? "", socialType: .kakao, deviceToken: UserInfo.shared.deviceToken), isProfileCompleted: { bool in
                             self?.presentNextViewController(isProfileCompleted: bool)
                         })
@@ -164,8 +164,8 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     
     /// 사용자 인증 실패 시 에러 처리를 합니다.
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        debugPrint("apple 로그인 사용자 인증 실패")
-        debugPrint("error \(error)")
+        gamPrint("apple 로그인 사용자 인증 실패")
+        gamPrint("error \(error)")
         self.showNetworkErrorAlert()
     }
 }

@@ -77,6 +77,55 @@ extension UIViewController {
         self.present(alertViewController, animated: true, completion: completion)
     }
     
+    /// 확인 버튼 1개, 취소 버튼 1개, textField Alert 메서드
+    func makeAlertWithTextField(
+        title: String, message: String? = nil,
+        placeHolder: String,
+        okTitle: String, okStyle: UIAlertAction.Style = .default,
+        cancelTitle: String = "취소",
+        okAction: ((String) -> Void)?,
+        cancelAction: ((UIAlertAction) -> Void)? = nil,
+        completion: (() -> Void)? = nil
+    ) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+
+        let alertViewController = UIAlertController(
+            title: title, message: message,
+            preferredStyle: .alert
+        )
+
+        let okAction = UIAlertAction(title: okTitle, style: okStyle) { _ in
+            guard let textFieldText = alertViewController.textFields?.first?.text else {
+                okAction?("")
+                return
+            }
+            
+            okAction?(textFieldText)
+        }
+        okAction.isEnabled = false
+        alertViewController.addAction(okAction)
+
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelAction)
+        alertViewController.addAction(cancelAction)
+        
+        alertViewController.addTextField { textField in
+            textField.placeholder = placeHolder
+            
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        }
+
+        self.present(alertViewController, animated: true, completion: completion)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let okAction = (presentedViewController as? UIAlertController)?.actions.first(where: { $0.style == .default }),
+              let text = textField.text
+        else { return }
+        
+        okAction.isEnabled = !text.isEmpty
+    }
+    
     /// 확인 버튼 Alert 메서드
     func makeAlert(
         title : String, message : String? = nil,
@@ -131,7 +180,7 @@ extension UIViewController {
             
             self.present(safariViewController, animated: true)
         } else {
-            debugPrint(#function, url, "URL String is not available.")
+            gamPrint(#function, url, "URL String is not available.")
         }
     }
     

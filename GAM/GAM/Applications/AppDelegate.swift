@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     /// APN 토큰과 등록 토큰 매핑 실패
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        debugPrint("APN 토큰 등록 실패", "fail")
+        gamPrint("APN 토큰 등록 실패", "fail")
     }
     
     /// 디바이스 세로방향으로 고정

@@ -33,7 +33,7 @@ extension PublicService: PublicServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GamURLResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }

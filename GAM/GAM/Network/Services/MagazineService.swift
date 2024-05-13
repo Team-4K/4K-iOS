@@ -36,7 +36,7 @@ extension MagazineService: MagazineServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, MagazineResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -52,7 +52,7 @@ extension MagazineService: MagazineServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, MagazineResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -68,7 +68,7 @@ extension MagazineService: MagazineServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, ScrapMagazineResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -84,7 +84,7 @@ extension MagazineService: MagazineServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, ScrapMagazineRequestDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -100,7 +100,7 @@ extension MagazineService: MagazineServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SearchMagazineResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }

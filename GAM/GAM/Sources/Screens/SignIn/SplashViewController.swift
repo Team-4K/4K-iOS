@@ -68,7 +68,7 @@ final class SplashViewController: BaseViewController {
         
         self.remoteConfig?.fetch { (status, error) -> Void in
             if status == .success {
-                debugPrint("Config fetched!")
+                gamPrint("Config fetched!")
                 self.remoteConfig?.activate { _, error in
                     let latestVersion: String = self.remoteConfig?.configValue(forKey: "latestVersion").stringValue ?? "0.0.0"
                     if AppInfo.shared.isUpdateNeeded(latest: latestVersion) {
@@ -82,8 +82,8 @@ final class SplashViewController: BaseViewController {
                     }
                 }
             } else {
-                debugPrint("Config not fetched")
-                debugPrint("Error: \(error?.localizedDescription ?? "No error available.")")
+                gamPrint("Config not fetched")
+                gamPrint("Error: \(error?.localizedDescription ?? "No error available.")")
                 DispatchQueue.main.async { [weak self] in
                     self?.autoSignIn()
                 }
