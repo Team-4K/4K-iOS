@@ -69,4 +69,8 @@ extension MagazineRouter: TargetType {
             ]
         }
     }
+    
+    var validationType: ValidationType {
+        return .successCodes
+    }
 }

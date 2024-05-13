@@ -171,4 +171,8 @@ extension UserRouter: TargetType {
             ]
         }
     }
+    
+    var validationType: ValidationType {
+        return .successCodes
+    }
 }
