@@ -24,7 +24,7 @@ final class AuthInterceptor: RequestInterceptor {
     }
 
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-        print("retry 진입")
+        gamPrint("retry 진입")
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401
         else {
             completion(.doNotRetryWithError(error))
