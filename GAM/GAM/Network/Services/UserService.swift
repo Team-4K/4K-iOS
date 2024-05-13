@@ -50,7 +50,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SocialLoginResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -66,7 +66,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, CheckUsernameDuplicatedResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -82,7 +82,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, PopularDesignerResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -98,7 +98,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, ScrapDesignerResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -114,7 +114,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetBrowseDesignerResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -130,7 +130,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetScrapDesignerResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -146,7 +146,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SearchDesignerResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -162,7 +162,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetUserProfileResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -178,7 +178,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetUserPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -194,7 +194,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetMyPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -210,7 +210,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -225,7 +225,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SetDefaultMyPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -240,7 +240,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SetDefaultMyPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -255,7 +255,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetImageUrlResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -267,7 +267,7 @@ extension UserService: UserServiceProtocol {
             case .success(_):
                 completion()
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -282,7 +282,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -297,7 +297,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, SetDefaultMyPortfolioResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -312,7 +312,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, GetMyProfileResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -327,7 +327,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, UpdateProfileResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -344,7 +344,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }
@@ -361,7 +361,7 @@ extension UserService: UserServiceProtocol {
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
                 completion(networkResult)
             case .failure(let error):
-                debugPrint(error)
+                gamPrint(error)
             }
         }
     }

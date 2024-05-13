@@ -93,6 +93,7 @@
 		FF6E2D572A965F7800EA313A /* MagazineResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */; };
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
 		FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */; };
+		FF9258512BF2505E00837C91 /* gamPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9258502BF2505E00837C91 /* gamPrint.swift */; };
 		FF92584F2BF24EB800837C91 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92584E2BF24EB800837C91 /* Data+.swift */; };
 		FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
@@ -296,6 +297,7 @@
 		FF6E2D562A965F7800EA313A /* MagazineResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineResponseDTO.swift; sourceTree = "<group>"; };
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamPopupViewController.swift; sourceTree = "<group>"; };
+		FF9258502BF2505E00837C91 /* gamPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamPrint.swift; sourceTree = "<group>"; };
 		FF92584E2BF24EB800837C91 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameDuplicatedResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 				FFA94CD22A4F08D4009B034F /* ClassName.swift */,
 				FFA94CD42A4F08EE009B034F /* Message.swift */,
 				FFA94CD62A4F0902009B034F /* UserDefaultsManager.swift */,
+				FF9258502BF2505E00837C91 /* gamPrint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1265,6 +1268,7 @@
 				FF6CC03B2A951FB400B24C94 /* SocialLoginRequestDTO.swift in Sources */,
 				FFA707172A585BCD003DF6A0 /* SignUpInfoViewController.swift in Sources */,
 				FF6BBED72B60F09E002196B3 /* PushNotificationHelper.swift in Sources */,
+				FF9258512BF2505E00837C91 /* gamPrint.swift in Sources */,
 				FFC733952A78EA8A008B5054 /* ProfileInfoView.swift in Sources */,
 				FFA707012A532B5B003DF6A0 /* GamFullButton.swift in Sources */,
 				FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */,

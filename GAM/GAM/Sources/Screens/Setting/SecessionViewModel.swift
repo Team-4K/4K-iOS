@@ -85,7 +85,7 @@ extension SecessionViewModel {
     }
     
     private func deleteAccount(completion: @escaping () -> ()) {
-        debugPrint("❤️‍🔥", self.state.selectedItems, self.state.reasonText.value)
+        gamPrint("❤️‍🔥", self.state.selectedItems, self.state.reasonText.value)
         self.networkService.requestSecession(data: SecessionRequestDTO(deleteAccountReasons: self.state.selectedItems,
                                                                        directInput: self.state.reasonText.value)) { networkResult in
             switch networkResult {
