@@ -16,10 +16,11 @@ final class AuthInterceptor: RequestInterceptor {
 
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         let accessToken = UserInfo.shared.accessToken
-        let refreshToken = UserInfo.shared.refreshToken
-        
         var urlRequest = urlRequest
-        urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
+        
+        if urlRequest.method != .put {
+            urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
+        }
         completion(.success(urlRequest))
     }
 
