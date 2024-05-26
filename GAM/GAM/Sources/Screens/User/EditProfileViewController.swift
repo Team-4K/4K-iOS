@@ -112,7 +112,7 @@ final class EditProfileViewController: BaseViewController {
     private var profileInfoObservation: NSKeyValueObservation?
     private var tagObservation: NSKeyValueObservation?
     private var emailObservation: NSKeyValueObservation?
-    private var isSaveButtonEnable: [Bool] = [false, false, false, false] {
+    private var isSaveButtonEnable: [Bool] = [false, false, false, true] {
         didSet {
             self.navigationView.saveButton.isEnabled = self.isSaveButtonEnable[0]
                 && self.isSaveButtonEnable[1]
@@ -227,9 +227,8 @@ final class EditProfileViewController: BaseViewController {
         self.nicknameTextField.rx.controlEvent(.allEditingEvents)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.isSaveButtonEnable[3] = false
                 guard let changedText = owner.nicknameTextField.text else { return }
-                
+                owner.isSaveButtonEnable[3] = owner.profile.name == changedText
                 owner.nicknameTextField.font = .caption2Regular
                 owner.nicknameTextField.clearButton.isHidden = changedText.isEmpty
                 owner.nicknameCountLabel.isHidden = changedText.isEmpty
