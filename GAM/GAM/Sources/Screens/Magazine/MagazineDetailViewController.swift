@@ -18,7 +18,8 @@ final class MagazineDetailViewController: BaseViewController {
     // MARK: UIComponents
     
     private let navigationView: GamNavigationView = {
-        let view: GamNavigationView = GamNavigationView(type: .backTitleShare)
+//        let view: GamNavigationView = GamNavigationView(type: .backTitleShare)
+        let view: GamNavigationView = GamNavigationView(type: .backTitle)
         view.setCenterTitle(Text.title)
         return view
     }()
@@ -49,7 +50,7 @@ final class MagazineDetailViewController: BaseViewController {
         self.setBackButtonAction(self.navigationView.backButton)
         self.setLayout()
         self.setWebView()
-        self.setShareButtonAction()
+//        self.setShareButtonAction()
     }
     
     // MARK: Methods
@@ -62,7 +63,7 @@ final class MagazineDetailViewController: BaseViewController {
         
         guard let url = URL(string: self.url) else { return }
         
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         
         let script = WKUserScript(
             source: "window.localStorage.setItem('accessToken','\(UserInfo.shared.accessToken)');",
