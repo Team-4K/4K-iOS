@@ -227,7 +227,9 @@ final class EditProfileViewController: BaseViewController {
         self.nicknameTextField.rx.controlEvent(.allEditingEvents)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                guard let changedText = owner.nicknameTextField.text else { return }
+                guard let changedText = owner.nicknameTextField.text?.replacingOccurrences(of: " ", with: "") else { return }
+                owner.nicknameTextField.text = changedText
+                
                 owner.isSaveButtonEnable[3] = owner.profile.name == changedText
                 owner.nicknameTextField.font = .caption2Regular
                 owner.nicknameTextField.clearButton.isHidden = changedText.isEmpty
