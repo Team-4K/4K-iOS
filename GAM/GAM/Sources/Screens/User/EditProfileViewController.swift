@@ -46,14 +46,23 @@ final class EditProfileViewController: BaseViewController {
     
     private let nicknameTitleLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.nicknameTitle, font: .subhead4Bold)
     
-    private let nicknameTextField: GamTextField = {
+    private var nicknameTextField: GamTextField = {
         let textField: GamTextField = GamTextField(type: .none)
         return textField
     }()
     
-    private let nicknameCheckButton: GamFullButton = {
-        let button: GamFullButton = GamFullButton(type: .system)
+    private let nicknameCountLabel: GamSingleLineLabel = {
+        let label: GamSingleLineLabel = GamSingleLineLabel(text: "0/15", font: .caption1Regular, color: .gamGray3)
+        label.textAlignment = .right
+        label.isHidden = true
+        return label
+    }()
+    
+    private let nicknameCheckButton: UIButton = {
+        let button: UIButton = UIButton()
         button.setTitle(Text.nicknameCheck, for: .normal)
+        button.backgroundColor = .gamGray2
+        button.titleLabel?.textColor = .gamWhite
         button.makeRounded(cornerRadius: 8)
         button.titleLabel?.font = .body2Medium
         return button
@@ -133,6 +142,7 @@ final class EditProfileViewController: BaseViewController {
         self.setLayout()
         self.setTagCollectionView()
         self.setBackButtonAction(self.navigationView.backButton)
+        self.setNicknameView()
         self.setEmailTextField()
         self.setSaveButtonAction()
         self.checkSaveButtonEnable()
@@ -204,6 +214,39 @@ final class EditProfileViewController: BaseViewController {
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height), animated: true)
             }
         }
+    }
+    
+    private func setNicknameView() {
+        self.nicknameTextField.text = self.profile.name
+        
+        self.nicknameTextField.rx.controlEvent(.allEditingEvents)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard let changedText = owner.nicknameTextField.text else { return }
+                
+                owner.nicknameCountLabel.isHidden = owner.nicknameTextField.clearButton.isHidden
+                owner.nicknameCheckButton.isEnabled = (owner.profile.name != changedText) && (!changedText.isEmpty)
+                
+                if owner.nicknameCheckButton.isEnabled {
+                    owner.nicknameCheckButton.backgroundColor = .gamBlack
+                } else {
+                    owner.nicknameCheckButton.backgroundColor = .gamGray2
+                }
+                
+                if changedText.count > 15 {
+                    owner.nicknameTextField.deleteBackward()
+                } else {
+                    owner.nicknameCountLabel.text = "\(changedText.count)/15"
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        self.nicknameTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(with: self) { owner, _ in
+                owner.nicknameCountLabel.isHidden = true
+                owner.nicknameTextField.clearButton.isHidden = true
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setProfileInfoView() {
@@ -445,7 +488,7 @@ extension EditProfileViewController {
     private func setLayout() {
         self.view.addSubviews([navigationView, scrollView])
         self.scrollView.addSubview(contentView)
-        self.contentView.addSubviews([nicknameTitleLabel, nicknameTextField, nicknameCheckButton, infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
+        self.contentView.addSubviews([nicknameTitleLabel, nicknameTextField, nicknameCountLabel, nicknameCheckButton, infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
         
         self.navigationView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
@@ -473,6 +516,11 @@ extension EditProfileViewController {
             make.leading.equalToSuperview().inset(20)
             make.trailing.equalTo(self.nicknameCheckButton.snp.leading).offset(-8)
             make.height.equalTo(44)
+        }
+        
+        self.nicknameCountLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(self.nicknameTextField)
+            make.trailing.equalTo(self.nicknameTextField).inset(40)
         }
         
         self.nicknameCheckButton.snp.makeConstraints { make in
