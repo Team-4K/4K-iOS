@@ -56,9 +56,21 @@ final class MagazineDetailViewController: BaseViewController {
     
     private func setWebView() {
         self.webView.navigationDelegate = self
+        if #available(iOS 16.4, *) {
+            self.webView.isInspectable = true
+        }
+        
         guard let url = URL(string: self.url) else { return }
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        
+        let script = WKUserScript(
+            source: "window.localStorage.setItem('accessToken','\(UserInfo.shared.accessToken)');",
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        self.webView.configuration.userContentController.addUserScript(script)
+        
         self.webView.load(request)
     }
     
