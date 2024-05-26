@@ -22,12 +22,16 @@ final class BrowseDiscoverCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private let visibilityImageView: UIImageView = UIImageView(image: .visibilityGray)
+    private let visibilityImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = .visibilityGray.withTintColor(.gamWhite)
+        return imageView
+    }()
     
     private let visibilityCountLabel: UILabel = {
         let label: UILabel = UILabel()
         label.font = .caption2Regular
-        label.textColor = .gamGray3
+        label.textColor = .gamWhite
         label.textAlignment = .left
         return label
     }()
