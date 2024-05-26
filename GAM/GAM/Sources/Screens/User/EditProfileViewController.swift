@@ -14,6 +14,7 @@ final class EditProfileViewController: BaseViewController {
     
     private enum Text {
         static let title = "프로필"
+        static let nicknameTitle = "닉네임"
         static let infoTitle = "내소개"
         static let tagTitle = "활동 분야"
         static let emailTitle = "이메일"
@@ -22,6 +23,9 @@ final class EditProfileViewController: BaseViewController {
         static let tagInfo = "최소 1개 선택해 주세요."
         static let emailInfo = "올바른 이메일을 입력해 주세요."
         static let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
+        static let nicknameAvailable = "사용가능한 닉네임입니다."
+        static let nicknameError = "한글, 영문, 숫자만 입력 가능합니다."
+        static let nicknameCheck = "중복확인"
     }
     
     private enum Number {
@@ -39,6 +43,21 @@ final class EditProfileViewController: BaseViewController {
     
     private let scrollView: UIScrollView = UIScrollView()
     private let contentView: UIView = UIView()
+    
+    private let nicknameTitleLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.nicknameTitle, font: .subhead4Bold)
+    
+    private let nicknameTextField: GamTextField = {
+        let textField: GamTextField = GamTextField(type: .none)
+        return textField
+    }()
+    
+    private let nicknameCheckButton: GamFullButton = {
+        let button: GamFullButton = GamFullButton(type: .system)
+        button.setTitle(Text.nicknameCheck, for: .normal)
+        button.makeRounded(cornerRadius: 8)
+        button.titleLabel?.font = .body2Medium
+        return button
+    }()
     
     private let infoTitleLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.infoTitle, font: .subhead4Bold)
     
@@ -426,7 +445,7 @@ extension EditProfileViewController {
     private func setLayout() {
         self.view.addSubviews([navigationView, scrollView])
         self.scrollView.addSubview(contentView)
-        self.contentView.addSubviews([infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
+        self.contentView.addSubviews([nicknameTitleLabel, nicknameTextField, nicknameCheckButton, infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
         
         self.navigationView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
@@ -443,8 +462,28 @@ extension EditProfileViewController {
             make.edges.width.equalToSuperview()
         }
         
-        self.infoTitleLabel.snp.makeConstraints { make in
+        self.nicknameTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(26)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(27)
+        }
+        
+        self.nicknameTextField.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTitleLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(self.nicknameCheckButton.snp.leading).offset(-8)
+            make.height.equalTo(44)
+        }
+        
+        self.nicknameCheckButton.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTextField)
+            make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(self.nicknameTextField)
+            make.width.equalTo(72)
+        }
+        
+        self.infoTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTextField.snp.bottom).offset(38)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(27)
         }
