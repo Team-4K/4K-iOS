@@ -141,6 +141,9 @@ extension HomeViewController: UICollectionViewDataSource {
                 self?.requestScrapDesigner(data: .init(targetUserId: self?.designers[indexPath.row].id ?? 0, currentScrapStatus: bool)) {
                     self?.designers[indexPath.row].isScrap = !bool
                     cell.scrapButton.isSelected = !bool
+                    if !bool {
+                        self?.showToastMessage(type: .completedScrap)
+                    }
                 }
             }
         }
