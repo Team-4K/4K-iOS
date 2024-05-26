@@ -27,7 +27,12 @@ final class PopularDesignerCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let scrapButton: ScrapButton = ScrapButton(type: .system)
+    let scrapButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.scrapOffWhite, for: .normal)
+        button.setImage(.scrapOnWhite, for: .selected)
+        return button
+    }()
     
     private let underlineView: UIView = {
         let view: UIView = UIView()
@@ -96,6 +101,7 @@ extension PopularDesignerCollectionViewCell {
         self.scrapButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(3)
             make.right.equalToSuperview()
+            make.size.equalTo(44)
         }
         
         self.titleLabel.snp.makeConstraints { make in
