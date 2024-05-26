@@ -335,7 +335,7 @@ extension BaseViewController {
             case .success(let response):
                 if let result = response as? ScrapMagazineRequestDTO {
                     if result.currentScrapStatus {
-                        self.showToastMessage(type: .completedScrap)
+                        self.navigationController?.topViewController?.showToastMessage(type: .completedScrap)
                     }
                     completion()
                 }
