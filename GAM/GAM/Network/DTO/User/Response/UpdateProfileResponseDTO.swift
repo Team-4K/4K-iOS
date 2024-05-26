@@ -12,12 +12,13 @@ struct UpdateProfileResponseDTO: Decodable {
     let userDetail: String
     let email: String
     let tags: [Int]
+    let userName: String
 }
 
 extension UpdateProfileResponseDTO {
     func toUserProfileEntity() -> UserProfileEntity {
         return UserProfileEntity(userID: 0,
-                                 name: "",
+                                 name: userName,
                                  isScrap: false,
                                  info: userInfo,
                                  infoDetail: userDetail,

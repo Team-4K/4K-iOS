@@ -52,13 +52,13 @@ final class MyViewController: BaseViewController {
         self.setUpViews()
         self.setLayout()
         self.bindTabHeader()
-        self.updateUserProfile()
         self.setSettingButtonAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.updateUserProfile()
         self.showTabBar()
         self.tabHeaderView.collectionView.reloadData()
         self.bindTabHeader()
