@@ -9,7 +9,7 @@ import Foundation
 
 struct UserProfileEntity {
     var userID: Int
-    let name: String
+    var name: String
     var isScrap: Bool
     var info: String
     var infoDetail: String

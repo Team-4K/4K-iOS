@@ -12,11 +12,13 @@ struct UpdateMyProfileRequestDTO: Encodable {
     let userDetail: String
     let email: String
     let tags: [Int]
+    let userName: String
     
-    init(userInfo: String, userDetail: String, email: String, tags: [Int]) {
+    init(userInfo: String, userDetail: String, email: String, tags: [Int], userName: String) {
         self.userInfo = userInfo
         self.userDetail = userDetail
         self.email = email
         self.tags = tags
+        self.userName = userName
     }
 }

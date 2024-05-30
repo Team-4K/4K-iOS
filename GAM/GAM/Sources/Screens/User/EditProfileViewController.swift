@@ -14,6 +14,7 @@ final class EditProfileViewController: BaseViewController {
     
     private enum Text {
         static let title = "프로필"
+        static let nicknameTitle = "닉네임"
         static let infoTitle = "내소개"
         static let tagTitle = "활동 분야"
         static let emailTitle = "이메일"
@@ -22,6 +23,10 @@ final class EditProfileViewController: BaseViewController {
         static let tagInfo = "최소 1개 선택해 주세요."
         static let emailInfo = "올바른 이메일을 입력해 주세요."
         static let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
+        static let nicknameAvailable = "사용가능한 닉네임입니다."
+        static let nicknameError = "한글, 영문, 숫자만 입력 가능합니다."
+        static let nicknameBlank = "닉네임을 입력해주세요."
+        static let nicknameCheck = "중복확인"
     }
     
     private enum Number {
@@ -39,6 +44,32 @@ final class EditProfileViewController: BaseViewController {
     
     private let scrollView: UIScrollView = UIScrollView()
     private let contentView: UIView = UIView()
+    
+    private let nicknameTitleLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.nicknameTitle, font: .subhead4Bold)
+    
+    private var nicknameTextField: GamTextField = {
+        let textField: GamTextField = GamTextField(type: .none)
+        return textField
+    }()
+    
+    private let nicknameCountLabel: GamSingleLineLabel = {
+        let label: GamSingleLineLabel = GamSingleLineLabel(text: "0/15", font: .caption1Regular, color: .gamGray3)
+        label.textAlignment = .right
+        label.isHidden = true
+        return label
+    }()
+    
+    private let nicknameInfoLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.nicknameAvailable, font: .caption2Regular, color: .gamBlack)
+    
+    private let nicknameCheckButton: UIButton = {
+        let button: UIButton = UIButton()
+        button.setTitle(Text.nicknameCheck, for: .normal)
+        button.backgroundColor = .gamGray2
+        button.titleLabel?.textColor = .gamWhite
+        button.makeRounded(cornerRadius: 8)
+        button.titleLabel?.font = .body2Medium
+        return button
+    }()
     
     private let infoTitleLabel: GamSingleLineLabel = GamSingleLineLabel(text: Text.infoTitle, font: .subhead4Bold)
     
@@ -81,11 +112,12 @@ final class EditProfileViewController: BaseViewController {
     private var profileInfoObservation: NSKeyValueObservation?
     private var tagObservation: NSKeyValueObservation?
     private var emailObservation: NSKeyValueObservation?
-    private var isSaveButtonEnable: [Bool] = [false, false, false] {
+    private var isSaveButtonEnable: [Bool] = [false, false, false, true] {
         didSet {
             self.navigationView.saveButton.isEnabled = self.isSaveButtonEnable[0]
                 && self.isSaveButtonEnable[1]
                 && self.isSaveButtonEnable[2]
+                && self.isSaveButtonEnable[3]
         }
     }
     
@@ -114,6 +146,7 @@ final class EditProfileViewController: BaseViewController {
         self.setLayout()
         self.setTagCollectionView()
         self.setBackButtonAction(self.navigationView.backButton)
+        self.setNicknameView()
         self.setEmailTextField()
         self.setSaveButtonAction()
         self.checkSaveButtonEnable()
@@ -185,6 +218,86 @@ final class EditProfileViewController: BaseViewController {
                 self.scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.height), animated: true)
             }
         }
+    }
+    
+    private func setNicknameView() {
+        self.nicknameInfoLabel.isHidden = true
+        self.nicknameTextField.text = self.profile.name
+        
+        self.nicknameTextField.rx.controlEvent(.allEditingEvents)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                guard let changedText = owner.nicknameTextField.text?.replacingOccurrences(of: " ", with: "") else { return }
+                owner.nicknameTextField.text = changedText
+                
+                owner.isSaveButtonEnable[3] = owner.profile.name == changedText
+                owner.nicknameTextField.font = .caption2Regular
+                owner.nicknameTextField.clearButton.isHidden = changedText.isEmpty
+                owner.nicknameCountLabel.isHidden = changedText.isEmpty
+                owner.nicknameCheckButton.isEnabled = (owner.profile.name != changedText) && (!changedText.isEmpty)
+
+                if owner.nicknameCheckButton.isEnabled {
+                    owner.nicknameCheckButton.backgroundColor = .gamBlack
+                } else {
+                    owner.nicknameCheckButton.backgroundColor = .gamGray2
+                }
+                
+                if changedText.count > 15 {
+                    owner.nicknameTextField.deleteBackward()
+                } else {
+                    owner.nicknameCountLabel.text = "\(changedText.count)/15"
+                }
+                
+                if changedText.isEmpty {
+                    owner.nicknameInfoLabel.isHidden = false
+                    owner.nicknameTextField.layer.borderWidth = 1
+                    owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
+                    owner.nicknameInfoLabel.text = Text.nicknameBlank
+                    owner.nicknameInfoLabel.textColor = .gamRed
+                } else {
+                    owner.nicknameInfoLabel.isHidden = true
+                    owner.nicknameTextField.layer.borderWidth = 0
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        self.nicknameTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(with: self) { owner, _ in
+                owner.nicknameCountLabel.isHidden = true
+                owner.nicknameTextField.clearButton.isHidden = true
+            }
+            .disposed(by: disposeBag)
+        
+        self.nicknameTextField.clearButton.rx.tap
+            .subscribe(with: self) { owner, _ in
+                owner.nicknameCheckButton.backgroundColor = .gamGray2
+                owner.nicknameCheckButton.isEnabled = false
+            }
+            .disposed(by: disposeBag)
+        
+        self.nicknameCheckButton.rx.tap
+            .subscribe(with: self) { owner, _ in
+                guard let nickname = owner.nicknameTextField.text else { return }
+                owner.checkUsernameDuplicated(username: nickname) { isDuplicated in
+                    owner.nicknameInfoLabel.isHidden = false
+                    owner.nicknameTextField.layer.borderWidth = 1
+                    
+                    if isDuplicated {
+                        owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
+                        owner.nicknameInfoLabel.textColor = .gamRed
+                        owner.nicknameInfoLabel.text = Text.nicknameError
+                    } else {
+                        owner.nicknameTextField.font = .caption3Medium
+                        owner.nicknameCheckButton.isEnabled = false
+                        owner.nicknameCheckButton.backgroundColor = .gamGray2
+                        owner.nicknameTextField.layer.borderColor = UIColor.gamBlack.cgColor
+                        owner.nicknameInfoLabel.text = Text.nicknameAvailable
+                        owner.nicknameInfoLabel.textColor = .gamBlack
+                        owner.isSaveButtonEnable[3] = true
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setProfileInfoView() {
@@ -261,8 +374,9 @@ final class EditProfileViewController: BaseViewController {
     private func setSaveButtonAction() {
         self.navigationView.saveButton.setAction { [weak self] in
             if let profile = self?.profile, let tags = self?.tagCollectionView.indexPathsForSelectedItems?.map({ $0.item + 1 }) {
+                guard let userName = self?.nicknameTextField.text else { return }
                 let infoDetail = profile.infoDetail == Text.detailPlaceholder ? "" : profile.infoDetail
-                self?.updateProfile(userInfo: profile.info, userDetail: infoDetail, email: profile.email, tags: tags) { responseData in
+                self?.updateProfile(userInfo: profile.info, userDetail: infoDetail, email: profile.email, tags: tags, userName: userName) { responseData in
                     self?.sendUpdateDelegate?.sendUpdate(data: responseData)
                     self?.navigationController?.popViewController(animated: true)
                 }
@@ -404,9 +518,24 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Network
 
 private extension EditProfileViewController {
-    private func updateProfile(userInfo: String, userDetail: String, email: String, tags: [Int], completion: @escaping (UserProfileEntity) -> ()) {
+    private func checkUsernameDuplicated(username: String, completion: @escaping (Bool) -> ()) {
         self.startActivityIndicator()
-        UserService.shared.updateProfile(data: UpdateMyProfileRequestDTO(userInfo: userInfo, userDetail: userDetail, email: email, tags: tags)) { networkResult in
+        UserService.shared.checkUsernameDuplicated(data: username) { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? CheckUsernameDuplicatedResponseDTO {
+                    completion(result.isDuplicated)
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+            self.stopActivityIndicator()
+        }
+    }
+    
+    private func updateProfile(userInfo: String, userDetail: String, email: String, tags: [Int], userName: String, completion: @escaping (UserProfileEntity) -> ()) {
+        self.startActivityIndicator()
+        UserService.shared.updateProfile(data: UpdateMyProfileRequestDTO(userInfo: userInfo, userDetail: userDetail, email: email, tags: tags, userName: userName)) { networkResult in
             switch networkResult {
             case .success(let responseData):
                 if let result = responseData as? UpdateProfileResponseDTO {
@@ -426,7 +555,7 @@ extension EditProfileViewController {
     private func setLayout() {
         self.view.addSubviews([navigationView, scrollView])
         self.scrollView.addSubview(contentView)
-        self.contentView.addSubviews([infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
+        self.contentView.addSubviews([nicknameTitleLabel, nicknameTextField, nicknameCountLabel, nicknameCheckButton, nicknameInfoLabel, infoTitleLabel, profileInfoView, tagTitleLabel, tagCollectionView, emailTitleLabel, emailTextField, profileInfoLabel, tagInfoLabel, emailInfoLabel, profileInfoDetailCountLabel])
         
         self.navigationView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
@@ -443,8 +572,38 @@ extension EditProfileViewController {
             make.edges.width.equalToSuperview()
         }
         
-        self.infoTitleLabel.snp.makeConstraints { make in
+        self.nicknameTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(26)
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(27)
+        }
+        
+        self.nicknameTextField.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTitleLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalTo(self.nicknameCheckButton.snp.leading).offset(-8)
+            make.height.equalTo(44)
+        }
+        
+        self.nicknameCountLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(self.nicknameTextField)
+            make.trailing.equalTo(self.nicknameTextField).inset(40)
+        }
+        
+        self.nicknameInfoLabel.snp.makeConstraints { make in
+            make.leading.equalTo(self.nicknameTextField).offset(4)
+            make.top.equalTo(self.nicknameTextField.snp.bottom).offset(6)
+        }
+        
+        self.nicknameCheckButton.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTextField)
+            make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(self.nicknameTextField)
+            make.width.equalTo(72)
+        }
+        
+        self.infoTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.nicknameTextField.snp.bottom).offset(38)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(27)
         }
