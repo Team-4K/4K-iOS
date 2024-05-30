@@ -91,7 +91,7 @@ final class NoScrapMagazineTableViewCell: UITableViewCell {
         self.thumbnailImageView.setImageUrl(data.thumbnailImageURL)
         self.titleLabel.setTextWithStyle(to: data.title, style: .caption3Medium, color: .gamBlack)
         self.authorLabel.text = data.author
-        self.visibilityCountLabel.text = "\(data.visibilityCount)"
+        self.visibilityStackView.isHidden = true
         
         self.highlightKeyword(keyword: keyword)
     }
