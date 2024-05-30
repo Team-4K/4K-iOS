@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamLogoKorean" translatesAutoresizingMaskIntoConstraints="NO" id="tfO-r6-djt">
-                                <rect key="frame" x="141.66666666666666" y="362.66666666666669" width="110" height="127"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_gam" translatesAutoresizingMaskIntoConstraints="NO" id="tfO-r6-djt">
+                                <rect key="frame" x="106.66666666666669" y="336" width="180" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="4FT-Rz-erD"/>
-                                    <constraint firstAttribute="height" constant="127" id="x3x-xK-ahd"/>
+                                    <constraint firstAttribute="width" constant="180" id="4FT-Rz-erD"/>
+                                    <constraint firstAttribute="height" constant="180" id="x3x-xK-ahd"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gamLogoKorean" width="110" height="128"/>
+        <image name="logo_gam" width="60.333332061767578" height="60"/>
         <namedColor name="gamBlackLogo">
             <color red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
