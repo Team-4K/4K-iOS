@@ -25,6 +25,10 @@ extension UIImage {
     
     static let scrapOff: UIImage = (UIImage(named: "icon_Scrap_off") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
+    static let scrapOnWhite: UIImage = (UIImage(named: "icon_Scrap_on_White") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
+    static let scrapOffWhite: UIImage = (UIImage(named: "icon_Scrap_off_White") ?? UIImage()).withRenderingMode(.alwaysOriginal)
+    
     static let visibilityBlack: UIImage = (UIImage(named: "visibility_black") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
     static let visibilityGray: UIImage = (UIImage(named: "visibilityGray") ?? UIImage()).withRenderingMode(.alwaysOriginal)
