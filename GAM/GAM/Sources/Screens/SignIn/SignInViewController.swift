@@ -21,7 +21,7 @@ final class SignInViewController: BaseViewController {
     // MARK: UIComponents
     
     private let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: .gamLogoKorean)
+        let imageView = UIImageView(image: .gamLogo)
         return imageView
     }()
     
@@ -213,9 +213,8 @@ extension SignInViewController {
         
         self.logoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(272.adjustedH)
-            make.width.equalTo(110)
-            make.height.equalTo(127)
+            make.top.equalToSuperview().inset(211.adjustedH)
+            make.width.height.equalTo(180)
         }
         
         self.infoLabel.snp.makeConstraints { make in

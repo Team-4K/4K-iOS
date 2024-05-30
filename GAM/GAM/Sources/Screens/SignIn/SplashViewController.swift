@@ -14,7 +14,7 @@ final class SplashViewController: BaseViewController {
     // MARK: UIComponents
     
     private let logoImageView: UIImageView = {
-        let imageView = UIImageView(image: .gamLogoKorean)
+        let imageView = UIImageView(image: .gamLogo)
         return imageView
     }()
     
@@ -103,8 +103,7 @@ extension SplashViewController {
         
         self.logoImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
-            make.width.equalTo(110)
-            make.height.equalTo(127)
+            make.width.height.equalTo(180)
         }
     }
 }

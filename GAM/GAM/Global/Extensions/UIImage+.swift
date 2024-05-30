@@ -13,7 +13,7 @@ extension UIImage {
     
     static let appleLogin: UIImage = (UIImage(named: "apple_login") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
-    static let gamLogoKorean: UIImage = UIImage(named: "gamLogoKorean") ?? UIImage()
+    static let gamLogo: UIImage = UIImage(named: "logo_gam") ?? UIImage()
     
     static let textFieldClear: UIImage = (UIImage(named: "textFieldClear") ?? UIImage()).withRenderingMode(.alwaysOriginal)
     
