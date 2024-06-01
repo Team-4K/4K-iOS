@@ -109,6 +109,23 @@ extension MagazineDetailViewController: WKNavigationDelegate {
     }
 }
 
+// MARK: - Network
+
+extension MagazineDetailViewController {
+    private func requestCheckPermission(completion: @escaping (Bool) -> ()) {
+        UserService.shared.checkPermission { networkResult in
+            switch networkResult {
+            case .success(let responseData):
+                if let result = responseData as? CheckPermissionResponseDTO {
+                completion(result.userStatus == "PERMITTED")
+                }
+            default:
+                self.showNetworkErrorAlert()
+            }
+        }
+    }
+}
+
 // MARK: - UI
 
 extension MagazineDetailViewController {
