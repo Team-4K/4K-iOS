@@ -11,14 +11,14 @@ import SnapKit
 final class GamPopupViewController: BaseViewController {
     
     private enum Text {
-        static let magazineTitle = "영감 매거진으로 감 잡기"
-        static let magazineContent = "포트폴리오를 작성해야\n더 많은 매거진으로 감 잡을 수 있어요!"
+        static let magazineTitle = "영감 매거진"
+        static let magazineContent = "포트폴리오를 작성해야\n더 많은 매거진을 볼 수 있어요!"
         static let later = "다음에요"
         static let write = "작성할래요"
     }
     
     private enum Number {
-        static let radius = 16.0
+        static let radius = 20.0
     }
     
     // MARK: UIComponents
@@ -55,9 +55,9 @@ final class GamPopupViewController: BaseViewController {
     let writeButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.write, for: .normal)
-        button.setTitleColor(.gamBlack, for: .normal)
+        button.setTitleColor(.gamWhite, for: .normal)
         button.titleLabel?.font = .subhead2SemiBold
-        button.setBackgroundColor(.gamPink, for: .normal)
+        button.setBackgroundColor(.gamBlack, for: .normal)
         return button
     }()
     
