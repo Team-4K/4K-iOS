@@ -45,6 +45,7 @@
 		FF0FA6112A6D87FA00482841 /* BrowseDesignerScrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */; };
 		FF0FA6132A6D976900482841 /* PortfolioSearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */; };
 		FF0FA6152A6D9E1F00482841 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */; };
+		FF14B51B2C0B20E300F8447D /* CheckPermissionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF14B51A2C0B20E300F8447D /* CheckPermissionResponseDTO.swift */; };
 		FF2C14672AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */; };
 		FF2E86AF2AA2BE1700258D75 /* ScrapMagazineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */; };
 		FF6BBEA02B5ED8F6002196B3 /* GamUpdatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6BBE9F2B5ED8F6002196B3 /* GamUpdatePopupViewController.swift */; };
@@ -94,8 +95,8 @@
 		FF6E2D5F2A96636300EA313A /* PopularDesignerResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */; };
 		FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */; };
 		FF92584D2BEF519F00837C91 /* AuthIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92584C2BEF519F00837C91 /* AuthIntercepter.swift */; };
-		FF9258512BF2505E00837C91 /* gamPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9258502BF2505E00837C91 /* gamPrint.swift */; };
 		FF92584F2BF24EB800837C91 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF92584E2BF24EB800837C91 /* Data+.swift */; };
+		FF9258512BF2505E00837C91 /* gamPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9258502BF2505E00837C91 /* gamPrint.swift */; };
 		FFA2AA572B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */; };
 		FFA706E32A4F302F003DF6A0 /* PagingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */; };
 		FFA706E62A4F318F003DF6A0 /* RxSwiftExt in Frameworks */ = {isa = PBXBuildFile; productRef = FFA706E52A4F318F003DF6A0 /* RxSwiftExt */; };
@@ -274,6 +275,7 @@
 		FF0FA6102A6D87FA00482841 /* BrowseDesignerScrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseDesignerScrapEntity.swift; sourceTree = "<group>"; };
 		FF0FA6122A6D976900482841 /* PortfolioSearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSearchEntity.swift; sourceTree = "<group>"; };
 		FF0FA6142A6D9E1F00482841 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		FF14B51A2C0B20E300F8447D /* CheckPermissionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPermissionResponseDTO.swift; sourceTree = "<group>"; };
 		FF2C14662AD41751008E3FF5 /* ScrapMagazineRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineRequestDTO.swift; sourceTree = "<group>"; };
 		FF2E86AE2AA2BE1700258D75 /* ScrapMagazineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapMagazineDTO.swift; sourceTree = "<group>"; };
 		FF6BBE9F2B5ED8F6002196B3 /* GamUpdatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamUpdatePopupViewController.swift; sourceTree = "<group>"; };
@@ -299,8 +301,8 @@
 		FF6E2D5E2A96636300EA313A /* PopularDesignerResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDesignerResponseDTO.swift; sourceTree = "<group>"; };
 		FF83FD9B2B5D68E80047748B /* GamPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamPopupViewController.swift; sourceTree = "<group>"; };
 		FF92584C2BEF519F00837C91 /* AuthIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthIntercepter.swift; sourceTree = "<group>"; };
-		FF9258502BF2505E00837C91 /* gamPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamPrint.swift; sourceTree = "<group>"; };
 		FF92584E2BF24EB800837C91 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		FF9258502BF2505E00837C91 /* gamPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamPrint.swift; sourceTree = "<group>"; };
 		FFA2AA562B59076400FCE598 /* CheckUsernameDuplicatedResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameDuplicatedResponseDTO.swift; sourceTree = "<group>"; };
 		FFA706E22A4F302F003DF6A0 /* PagingHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingHeaderCell.swift; sourceTree = "<group>"; };
 		FFA706E72A4F363B003DF6A0 /* PagingTabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingTabHeaderView.swift; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				84C03A0A2B4D16F80058EC79 /* GetImageUrlResponseDTO.swift */,
 				848403C82B514A2C009249E3 /* GetMyProfileResponseDTO.swift */,
 				84BBCBF72B52CC900010F2AE /* UpdateProfileResponseDTO.swift */,
+				FF14B51A2C0B20E300F8447D /* CheckPermissionResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1378,6 +1381,7 @@
 				FF04135D2A62F28200BE65F1 /* BrowseDiscoverCollectionViewCell.swift in Sources */,
 				FF83FD9C2B5D68E80047748B /* GamPopupViewController.swift in Sources */,
 				FFA94CEF2A4F1ABD009B034F /* UITextField+.swift in Sources */,
+				FF14B51B2C0B20E300F8447D /* CheckPermissionResponseDTO.swift in Sources */,
 				FFA707192A59A390003DF6A0 /* Adjusted+.swift in Sources */,
 				FFA706E82A4F363B003DF6A0 /* PagingTabHeaderView.swift in Sources */,
 				FFA7070A2A572E63003DF6A0 /* GamNavigationView.swift in Sources */,
