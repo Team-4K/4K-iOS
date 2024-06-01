@@ -49,11 +49,32 @@ final class MagazineDetailViewController: BaseViewController {
         
         self.setBackButtonAction(self.navigationView.backButton)
         self.setLayout()
-        self.setWebView()
+        self.checkPermission()
 //        self.setShareButtonAction()
     }
     
     // MARK: Methods
+    
+    private func checkPermission() {
+        self.requestCheckPermission { isGranted in
+            isGranted ? self.setWebView() : self.showNoPermissionPopupView()
+        }
+    }
+    
+    private func showNoPermissionPopupView() {
+        let popupViewController: GamPopupViewController = GamPopupViewController()
+        popupViewController.cancelButton.setAction {
+            popupViewController.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
+        }
+        popupViewController.writeButton.setAction {
+            popupViewController.dismiss(animated: true)
+            self.tabBarController?.selectedIndex = 3
+            self.navigationController?.popViewController(animated: true)
+        }
+            
+        self.present(popupViewController, animated: true)
+    }
     
     private func setWebView() {
         self.webView.navigationDelegate = self

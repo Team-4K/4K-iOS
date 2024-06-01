@@ -11,8 +11,8 @@ import SnapKit
 final class GamPopupViewController: BaseViewController {
     
     private enum Text {
-        static let magazineTitle = "영감 매거진"
-        static let magazineContent = "포트폴리오를 작성해야\n더 많은 매거진을 볼 수 있어요!"
+        static let magazineTitle = "영감 매거진으로 감 잡기"
+        static let magazineContent = "포트폴리오를 작성해야\n더 많은 매거진으로 감 잡을 수 있어요!"
         static let later = "다음에요"
         static let write = "작성할래요"
     }
@@ -43,7 +43,7 @@ final class GamPopupViewController: BaseViewController {
         return label
     }()
     
-    private let cancelButton: UIButton = {
+    let cancelButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.later, for: .normal)
         button.setTitleColor(.gamBlack, for: .normal)
@@ -92,22 +92,6 @@ final class GamPopupViewController: BaseViewController {
         
         self.setLayout()
         self.setUI()
-        self.setCancelButtonAction()
-        self.setWriteButtonAction()
-    }
-    
-    // MARK: Methods
-    
-    private func setCancelButtonAction() {
-        self.cancelButton.setAction { [weak self] in
-            self?.dismiss(animated: true)
-        }
-    }
-    
-    private func setWriteButtonAction() {
-        self.writeButton.setAction { [weak self] in
-            self?.presentingViewController?.tabBarController?.selectedIndex = 3
-        }
     }
 }
 
