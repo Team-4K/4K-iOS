@@ -30,6 +30,7 @@ enum UserRouter {
     case updateProfile(data: UpdateMyProfileRequestDTO)
     case blockUser(data: BlockUserRequestDTO)
     case reportUser(data: ReportUserRequestDTO)
+    case checkPermission
 }
 
 extension UserRouter: TargetType {
@@ -93,6 +94,8 @@ extension UserRouter: TargetType {
             return "/block"
         case .reportUser:
             return "report"
+        case .checkPermission:
+            return "/user/status"
         }
     }
     
@@ -100,7 +103,7 @@ extension UserRouter: TargetType {
         switch self {
         case .requestSignUp, .requestScrapDesigner, .createPortfolio, .blockUser, .reportUser:
             return .post
-        case .checkUsernameDuplicated, .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner, .getUserProfile, .getUserPortfolio, .getPortfolio, .getImageUrl, .getProfile:
+        case .checkUsernameDuplicated, .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .searchDesigner, .getUserProfile, .getUserPortfolio, .getPortfolio, .getImageUrl, .getProfile, .checkPermission:
             return .get
         case .setRepPortfolio, .updateLink, .updatePortfolio, .updateProfile:
             return .patch
@@ -120,7 +123,7 @@ extension UserRouter: TargetType {
                 "userName": data
             ]
             return .requestParameters(parameters: body, encoding: URLEncoding.queryString)
-        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .getUserPortfolio, .getPortfolio, .getProfile:
+        case .getPopularDesigner, .getBrowseDesigner, .getScrapDesigner, .getUserPortfolio, .getPortfolio, .getProfile, .checkPermission:
             return .requestPlain
         case .requestScrapDesigner(let data):
             return .requestJSONEncodable(data)
@@ -140,7 +143,8 @@ extension UserRouter: TargetType {
             return .requestJSONEncodable(data)
         case .getImageUrl(let data):
             let params: [String: Any] = [
-                "fileName": data.imageName
+                "fileName": data.imageName,
+                "type": "work"
             ]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .uploadImage(let data):
