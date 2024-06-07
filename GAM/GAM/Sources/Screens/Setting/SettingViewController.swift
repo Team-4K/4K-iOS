@@ -130,15 +130,12 @@ extension SettingViewController: UITableViewDelegate {
         switch viewModel.submenus[indexPath.section][indexPath.row] {
         case "문의하기":
             self.sendContactMail()
-        case "리뷰 남기기":
-            let url = "itms-apps://itunes.apple.com/app/\(AppInfo.shared.appID)";
-            if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
         case "서비스 소개":
             self.openSafariInApp(url: AppInfo.shared.url.intro)
         case "만든 사람들":
             self.openSafariInApp(url: AppInfo.shared.url.makers)
+        case "오픈소스 라이브러리":
+            self.openSafariInApp(url: AppInfo.shared.url.openSource)
         case "서비스 이용약관":
             self.openSafariInApp(url: AppInfo.shared.url.agreement)
         case "개인정보처리방침":

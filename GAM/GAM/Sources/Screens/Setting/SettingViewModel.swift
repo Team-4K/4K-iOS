@@ -17,8 +17,8 @@ final class SettingViewModel {
     private let networkService: AuthService
     private let disposeBag = DisposeBag()
     
-    private let menus: [[String: [String]]] = [["문의 및 피드백": ["문의하기", "리뷰 남기기"]],
-                                       ["앱 정보": ["서비스 소개", "만든 사람들", "버전 정보"]],
+    private let menus: [[String: [String]]] = [["문의 및 피드백": ["문의하기"]],
+                                       ["앱 정보": ["서비스 소개", "만든 사람들", "오픈소스 라이브러리", "버전 정보"]],
                                        ["약관 및 정책": ["서비스 이용약관", "개인정보처리방침"]],
                                        ["계정정보": ["로그아웃", "탈퇴하기"]]]
     lazy var categories: [String] = {

@@ -13,10 +13,11 @@ final class AppInfo {
     init() { }
     
     var url: GamURLEntity = .init(
-        intro: "",
-        privacyPolicy: "",
-        agreement: "",
-        makers: ""
+        intro: "https://www.notion.so/ABOUT-GAM-4789adaf556a4fd28c95854d77fae0df",
+        privacyPolicy: "https://www.notion.so/37cbdfbcba564512b5bbe7ffa5920de0",
+        agreement: "https://www.notion.so/680b662811b74a7080a54750b24aa03e",
+        makers: "https://www.notion.so/WHO-MAKE-THIS-CREATIVE-SERVICE-811456b4bfaa4adcabcb48bba24b5b88",
+        openSource: "https://www.notion.so/5e91d3af2439425c97acad9413bdcf3c?pvs=4"
     )
     
     let appID: String = "6477517719"

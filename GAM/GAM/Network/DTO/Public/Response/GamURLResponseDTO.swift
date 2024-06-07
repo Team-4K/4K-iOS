@@ -12,15 +12,21 @@ struct GamURLResponseDTO: Codable {
     let policyURL: String
     let agreementURL: String
     let makersURL: String
+    let openSource: String
     
     enum CodingKeys: String, CodingKey {
         case introURL = "introUrl"
         case policyURL = "policyUrl"
         case agreementURL = "agreementUrl"
         case makersURL = "makersUrl"
+        case openSource = "openSource"
     }
     
     public func toEntity() -> GamURLEntity {
-        return GamURLEntity(intro: introURL, privacyPolicy: policyURL, agreement: agreementURL, makers: makersURL)
+        return GamURLEntity(intro: introURL,
+                            privacyPolicy: policyURL,
+                            agreement: agreementURL,
+                            makers: makersURL,
+                            openSource: openSource)
     }
 }
