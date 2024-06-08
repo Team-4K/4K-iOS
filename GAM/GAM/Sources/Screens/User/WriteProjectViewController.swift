@@ -339,7 +339,7 @@ extension WriteProjectViewController: UITextViewDelegate {
 private extension WriteProjectViewController {
     private func createPortfolio(image: String, title: String, detail: String, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        UserService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: image, title: title, detail: detail)) { networkResult in
+        UserService.shared.createPortfolio(data: CreatePortfolioRequestDTO(image: "/work/" + image, title: title, detail: detail)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()
