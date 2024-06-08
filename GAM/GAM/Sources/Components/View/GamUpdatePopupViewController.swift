@@ -46,9 +46,9 @@ final class GamUpdatePopupViewController: BaseViewController {
     let updateButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.update, for: .normal)
-        button.setTitleColor(.gamBlack, for: .normal)
+        button.setTitleColor(.gamWhite, for: .normal)
         button.titleLabel?.font = .subhead2SemiBold
-        button.setBackgroundColor(.gamPink, for: .normal)
+        button.setBackgroundColor(.gamBlack, for: .normal)
         button.makeRounded(cornerRadius: Number.buttonRadius)
         return button
     }()

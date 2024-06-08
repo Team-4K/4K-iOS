@@ -28,6 +28,7 @@ internal protocol UserServiceProtocol {
     func updatePortfolio(data: UpdateMyPortfolioRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
     func getProfile(completion: @escaping (NetworkResult<Any>) -> (Void))
     func blockUser(data: BlockUserRequestDTO, completion: @escaping (NetworkResult<Any>) -> (Void))
+    func checkPermission(completion: @escaping (NetworkResult<Any>) -> (Void))
 }
 
 final class UserService: BaseService {
@@ -359,6 +360,23 @@ extension UserService: UserServiceProtocol {
                 
                 // TODO: - 제네릭 타입 변경해야됨
                 let networkResult = self.judgeStatus(by: statusCode, data, String.self)
+                completion(networkResult)
+            case .failure(let error):
+                gamPrint(error)
+            }
+        }
+    }
+    
+    // [GET] 매거진 조회 권한 확인
+    func checkPermission(completion: @escaping (NetworkResult<Any>) -> (Void)) {
+        self.provider.request(.checkPermission) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                // TODO: - 제네릭 타입 변경해야됨
+                let networkResult = self.judgeStatus(by: statusCode, data, CheckPermissionResponseDTO.self)
                 completion(networkResult)
             case .failure(let error):
                 gamPrint(error)

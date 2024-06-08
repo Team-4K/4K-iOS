@@ -18,7 +18,7 @@ final class GamPopupViewController: BaseViewController {
     }
     
     private enum Number {
-        static let radius = 16.0
+        static let radius = 20.0
     }
     
     // MARK: UIComponents
@@ -43,7 +43,7 @@ final class GamPopupViewController: BaseViewController {
         return label
     }()
     
-    private let cancelButton: UIButton = {
+    let cancelButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.later, for: .normal)
         button.setTitleColor(.gamBlack, for: .normal)
@@ -55,9 +55,9 @@ final class GamPopupViewController: BaseViewController {
     let writeButton: UIButton = {
         let button: UIButton = UIButton(type: .system)
         button.setTitle(Text.write, for: .normal)
-        button.setTitleColor(.gamBlack, for: .normal)
+        button.setTitleColor(.gamWhite, for: .normal)
         button.titleLabel?.font = .subhead2SemiBold
-        button.setBackgroundColor(.gamPink, for: .normal)
+        button.setBackgroundColor(.gamBlack, for: .normal)
         return button
     }()
     
@@ -92,22 +92,6 @@ final class GamPopupViewController: BaseViewController {
         
         self.setLayout()
         self.setUI()
-        self.setCancelButtonAction()
-        self.setWriteButtonAction()
-    }
-    
-    // MARK: Methods
-    
-    private func setCancelButtonAction() {
-        self.cancelButton.setAction { [weak self] in
-            self?.dismiss(animated: true)
-        }
-    }
-    
-    private func setWriteButtonAction() {
-        self.writeButton.setAction { [weak self] in
-            self?.presentingViewController?.tabBarController?.selectedIndex = 3
-        }
     }
 }
 
