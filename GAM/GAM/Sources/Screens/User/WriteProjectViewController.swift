@@ -373,7 +373,7 @@ private extension WriteProjectViewController {
     
     private func updatePortfolio(workId: Int, image: String, title: String, detail: String, completion: @escaping () -> ()) {
         self.startActivityIndicator()
-        UserService.shared.updatePortfolio(data: UpdateMyPortfolioRequestDTO(workId: workId, image: image, title: title, detail: detail)) { networkResult in
+        UserService.shared.updatePortfolio(data: UpdateMyPortfolioRequestDTO(workId: workId, image: "/work/" + image, title: title, detail: detail)) { networkResult in
             switch networkResult {
             case .success(_):
                 completion()
