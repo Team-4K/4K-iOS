@@ -12,4 +12,5 @@ struct GamURLEntity {
     let privacyPolicy: String
     let agreement: String
     let makers: String
+    let openSource: String
 }

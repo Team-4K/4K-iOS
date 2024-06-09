@@ -16,7 +16,8 @@ final class AppInfo {
         intro: "",
         privacyPolicy: "",
         agreement: "",
-        makers: ""
+        makers: "",
+        openSource: ""
     )
     
     let appID: String = "6477517719"
