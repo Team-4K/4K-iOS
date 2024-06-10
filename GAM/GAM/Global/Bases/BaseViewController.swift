@@ -232,7 +232,7 @@ GAM 앱에서 보냈습니다.
             let compseVC = MFMailComposeViewController()
             compseVC.mailComposeDelegate = self
             
-            compseVC.setToRecipients(["must4rdev@gmail.com"])
+            compseVC.setToRecipients(["gam230803@gmail.com"])
             compseVC.setSubject("[감] 문의해요 👋")
             compseVC.setMessageBody(
 """
