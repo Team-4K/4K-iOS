@@ -24,7 +24,8 @@ final class EditProfileViewController: BaseViewController {
         static let emailInfo = "올바른 이메일을 입력해 주세요."
         static let detailPlaceholder = "경험 위주 자기소개 부탁드립니다."
         static let nicknameAvailable = "사용가능한 닉네임입니다."
-        static let nicknameError = "한글, 영문, 숫자만 입력 가능합니다."
+        static let nicknameTypeError = "한글, 영문, 숫자만 입력 가능합니다."
+        static let nicknameDuplicated = "이미 사용 중인 닉네임입니다."
         static let nicknameBlank = "닉네임을 입력해주세요."
         static let nicknameCheck = "중복확인"
     }
@@ -249,11 +250,11 @@ final class EditProfileViewController: BaseViewController {
                 }
                 
                 if changedText.isEmpty {
-                    owner.nicknameInfoLabel.isHidden = false
-                    owner.nicknameTextField.layer.borderWidth = 1
                     owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
                     owner.nicknameInfoLabel.text = Text.nicknameBlank
                     owner.nicknameInfoLabel.textColor = .gamRed
+                    owner.nicknameInfoLabel.isHidden = false
+                    owner.nicknameTextField.layer.borderWidth = 1
                 } else {
                     owner.nicknameInfoLabel.isHidden = true
                     owner.nicknameTextField.layer.borderWidth = 0
@@ -278,24 +279,32 @@ final class EditProfileViewController: BaseViewController {
         self.nicknameCheckButton.rx.tap
             .subscribe(with: self) { owner, _ in
                 guard let nickname = owner.nicknameTextField.text else { return }
-                owner.checkUsernameDuplicated(username: nickname) { isDuplicated in
-                    owner.nicknameInfoLabel.isHidden = false
-                    owner.nicknameTextField.layer.borderWidth = 1
-                    
-                    if isDuplicated {
-                        owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
-                        owner.nicknameInfoLabel.textColor = .gamRed
-                        owner.nicknameInfoLabel.text = Text.nicknameError
-                    } else {
-                        owner.nicknameTextField.font = .caption3Medium
-                        owner.nicknameCheckButton.isEnabled = false
-                        owner.nicknameCheckButton.backgroundColor = .gamGray2
-                        owner.nicknameTextField.layer.borderColor = UIColor.gamBlack.cgColor
-                        owner.nicknameInfoLabel.text = Text.nicknameAvailable
-                        owner.nicknameInfoLabel.textColor = .gamBlack
-                        owner.isSaveButtonEnable[3] = true
+                
+                let regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9]+$"
+                if NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: nickname) {
+                    owner.checkUsernameDuplicated(username: nickname) { isDuplicated in
+                        if isDuplicated {
+                            owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
+                            owner.nicknameInfoLabel.textColor = .gamRed
+                            owner.nicknameInfoLabel.text = Text.nicknameDuplicated
+                        } else {
+                            owner.nicknameTextField.font = .caption3Medium
+                            owner.nicknameCheckButton.isEnabled = false
+                            owner.nicknameCheckButton.backgroundColor = .gamGray2
+                            owner.nicknameTextField.layer.borderColor = UIColor.gamBlack.cgColor
+                            owner.nicknameInfoLabel.text = Text.nicknameAvailable
+                            owner.nicknameInfoLabel.textColor = .gamBlack
+                            owner.isSaveButtonEnable[3] = true
+                        }
                     }
+                } else {
+                    owner.nicknameTextField.layer.borderColor = UIColor.gamRed.cgColor
+                    owner.nicknameInfoLabel.textColor = .gamRed
+                    owner.nicknameInfoLabel.text = Text.nicknameTypeError
                 }
+                
+                owner.nicknameInfoLabel.isHidden = false
+                owner.nicknameTextField.layer.borderWidth = 1
             }
             .disposed(by: disposeBag)
     }
